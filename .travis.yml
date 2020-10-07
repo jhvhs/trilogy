@@ -10,10 +10,12 @@ jobs:
     - |
       echo Test output
       echo contents > sample-file
+      git branch
+      git log
       git add sample-file
       git commit -m "Added a file from travis ci"
       ssh-agent bash -c 'ssh-add deploy_key; git push'
     env: KEY_NAME=value
 before_install:
 - openssl aes-256-cbc -K $encrypted_189e52c2c347_key -iv $encrypted_189e52c2c347_iv
-  -in deploy_key.enc -out deploy_key -d
+  -in deploy_key.enc -out deploy_key -d && chmod 400 deploy_key
