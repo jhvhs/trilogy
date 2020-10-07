@@ -1,0 +1,11 @@
+dist: xenial
+language: java
+jobs:
+  fast_finish: true
+  include:
+  - stage: custom
+    name: push-files
+    script:
+    - |
+      echo Test output
+    env: KEY_NAME=value
