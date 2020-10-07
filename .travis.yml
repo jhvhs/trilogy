@@ -11,6 +11,7 @@ jobs:
       echo Test output
       echo contents > sample-file
       git branch
+      git checkout travis
       git log
       git add sample-file
       git commit -m "Added a file from travis ci"
