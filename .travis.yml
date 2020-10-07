@@ -15,6 +15,7 @@ jobs:
       git log
       git add sample-file
       git commit -m "Added a file from travis ci"
+      git config --global url."git@github.com:".insteadOf "https://github.com/"
       ssh-agent bash -c 'ssh-add deploy_key; git push'
     env: KEY_NAME=value
 before_install:
