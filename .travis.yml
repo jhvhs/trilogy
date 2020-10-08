@@ -12,7 +12,7 @@ jobs:
     script:
     - |
       echo Test output
-      echo contents > sample-file
+      echo New commit > sample-file
       git branch
       git checkout travis
       git log
