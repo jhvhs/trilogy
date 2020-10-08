@@ -6,6 +6,9 @@ jobs:
   include:
   - stage: custom
     name: push-files
+    before_install:
+    - openssl aes-256-cbc -K $encrypted_189e52c2c347_key -iv $encrypted_189e52c2c347_iv
+      -in deploy_key.enc -out deploy_key -d && chmod 400 deploy_key
     script:
     - |
       echo Test output
@@ -18,6 +21,3 @@ jobs:
       git config --global url."git@github.com:".insteadOf "https://github.com/"
       ssh-agent bash -c 'ssh-add deploy_key; git push'
     env: KEY_NAME=value
-before_install:
-- openssl aes-256-cbc -K $encrypted_189e52c2c347_key -iv $encrypted_189e52c2c347_iv
-  -in deploy_key.enc -out deploy_key -d && chmod 400 deploy_key
